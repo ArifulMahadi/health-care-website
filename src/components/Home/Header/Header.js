@@ -10,7 +10,7 @@ const Header = () => {
             <div className='header-container'> 
                 <Link style={{margin:'10px',textDecoration:"none", color:"white",fontSize:"20px"}} to='/home'>Home</Link>
                 <Link style={{margin:'10px',textDecoration:"none",  color:"white",fontSize:"20px"}} to='/about'>About Us</Link>
-                <Link style={{margin:'10px',textDecoration:"none",  color:"white",fontSize:"20px"}} to='/servicess'>Our Services</Link>
+                <Link style={{margin:'10px',textDecoration:"none",  color:"white",fontSize:"20px"}} to='/service'>Our Services</Link>
 
                 {user?.email ?
                     <button onClick={logOut} style={{border:'none',backgroundColor:'plum',margin:'10px',color:"white",fontSize:"20px"}} >Log Out</button>: 

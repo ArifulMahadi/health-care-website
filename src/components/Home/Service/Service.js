@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import './service.css'
 
 const Service = (props) => {
-    console.log(props.service)
     const { id,images, specialist,description} = props.service
     return (
         <div className="service-container" style={{color:"white"}}>

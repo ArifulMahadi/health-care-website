@@ -9,6 +9,7 @@ import Login from './Login/Login/Login';
 import AuthProvider from './Context/AuthProvider';
 import PrivateRoute from './Login/Login/PrivateRoute/PrivateRoute';
 import About from './About/About';
+import Servicess from './Servicess/Servicess';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
            </Route>
            <Route path='/about'>
               <About></About>
+           </Route>
+           <Route path='/service'>
+              <Servicess></Servicess>
            </Route>
            <PrivateRoute path='/details/:serviceid'>
              <Details></Details>
