@@ -10,6 +10,8 @@ const useFirebase = () => {
     const [password,setPassword] = useState('')
     const [user, setUser] = useState({})
     const [isLoading,setIsloading] = useState(true)
+    const [error,setError] = useState('')
+    const [isLogIn,setIsLogIn] = useState(false)
     const auth = getAuth();
     const signInUsingGoogole = () => {
         setIsloading(true)
@@ -43,6 +45,10 @@ const useFirebase = () => {
         .finally(() => setIsloading(false));;
     }
 
+    const toggleLogin = e => {
+        setIsLogIn(e.target.checked)
+    }
+
     const handleEmail = (e) => {
         setEmail(e.target.value)
     }
@@ -52,13 +58,21 @@ const useFirebase = () => {
 
 
     const createUserEmailPassword = (e) => {
-        console.log(email, password)
+        e.preventDefault();
+         if(password.length < 6){
+             setError('password should be at least 6 charecters')
+             return;
+         }
         createUserWithEmailAndPassword(auth,email,password)
         .then(result => {
             const user = result.user
             console.log(user)
+            setError('')
         })
-        e.preventDefault();
+        .catch(error => {
+            setError(error.message)
+        })
+        
 
     }
 
@@ -73,12 +87,16 @@ const useFirebase = () => {
         isLoading,
         email,
         password,
+        error,
+        isLogIn,
+        toggleLogin,
         signInUsingGoogole,
         createUserEmailPassword ,
         signInUsingGitHub,
         handleEmail,
         handlePassword,
         logOut,
+        
     }
 }
 export default useFirebase;

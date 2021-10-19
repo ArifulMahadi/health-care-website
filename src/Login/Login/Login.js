@@ -5,10 +5,10 @@ import './Login.css'
 
 
 const Login = () => {
-    const {signInUsingGoogole,signInUsingGitHub, createUserEmailPassword,handleEmail,handlePassword } = useAuth()
+    const {signInUsingGoogole,signInUsingGitHub, createUserEmailPassword,handleEmail,handlePassword,error,toggleLogin,isLogIn } = useAuth()
     return (
         <div className="login-container">
-            <h1 style={{color:"plum"}}>Please Sign Up</h1>
+            <h1 style={{color:"plum"}}>Please {isLogIn ? 'sign in' : "Sign Up"}</h1>
             <form onSubmit={ createUserEmailPassword }>
                 <label style={{marginRight:'10px',color:'plum'}} htmlFor="email">Email:</label>
 
@@ -18,8 +18,13 @@ const Login = () => {
                 <label style={{marginRight:'10px',color:'plum'}} htmlFor="password">Password</label>
                 <input onBlur={handlePassword} style={{padding:'10px',border:'2px solid plum'}} type="password" name="your password" id="" required />
                 <br />
-                 <input  style={{marginTop:'10px',padding:'15px 40px',backgroundColor:'plum',border:'none',borderRadius:'12px',color:'white'}} type="submit" value="Sign Up" />
+                 <input  style={{marginTop:'10px',padding:'15px 40px',backgroundColor:'plum',border:'none',borderRadius:'12px',color:'white'}} type="submit" value={isLogIn ? 'sign in' : "Sign Up"} />
             </form>
+           <div style={{marginTop:'15px',color:"plum"}}>
+           <label htmlFor="checkbox">Already have an account?</label>
+            <input onChange={toggleLogin} type="checkbox" name="" id="" />
+           </div>
+            <div style={{color:"red"}}><h2>{error}</h2></div>
             <div style={{marginTop:'20px',color:"plum"}}>
                 ______________ or _____________
             </div>

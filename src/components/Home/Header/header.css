@@ -4,3 +4,8 @@
     margin-bottom: 10px;
     
 }
+@media only screen and (max-width:689px) {
+    .header-container{
+        width: 80%;
+    }
+}
