@@ -72,7 +72,6 @@ const useFirebase = () => {
         .catch(error => {
             setError(error.message)
         })
-        
 
     }
 
