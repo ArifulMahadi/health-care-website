@@ -1,12 +1,29 @@
-import React, { useEffect } from 'react';
+
 import { useParams } from 'react-router';
-import { useState } from 'react/cjs/react.development';
+import { useEffect, useState } from 'react';
+import './Details.css';
 
 const Details = () => {
     const { serviceid } = useParams();
+    const [details,setDetails] = useState([])
+    useEffect( () => {
+        fetch('/services.json')
+        .then(res => res.json())
+        .then(data => setDetails(data))
+    } ,[])
+    const matchingService = details.find(detail=> detail.id = parseInt(serviceid))
+    const {images, specialist,description} = matchingService || {}
     return (
-        <div>
-            <h2 style={{width:'50%',textAlign:"center",color:'plum'}}>{serviceid}</h2>
+        <div className="detail-container">
+            <div className="image">
+            <img src={images} alt="" />
+            </div>
+            <div className="descriptions">
+                <h2>
+                    {specialist}
+                </h2>
+                <p>{description}</p>
+            </div>
            
         </div>
     );
